@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>to do something</title>
+    <title>To Do List</title>
 </head>
 <body>
 <div id="container"></div>
@@ -38,7 +38,7 @@
         render: function () {
             return (
                     <div>
-                        <h3>TODOS</h3>
+                        <h3>To Do List</h3>
                         <form onSubmit={this.handleSubmit}>
                             <input onChange={this.onChange} value={this.state.text}/>
                             <button>{'add action' + (this.state.items.length + 1)}</button>
