@@ -11,14 +11,14 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>To Do List</title>
+    <title><h1>To Do List</h1></title>
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
 
 </head>
-<body class="lean-bar">
-<section id="AppRoot" class="todoapp"></section>
+<body class="lean-bar" bgcolor="#fffacd">
+<div id="AppRoot" class="todoapp"></div>
 <script type="text/babel">
     var todolist = {
         name: "todos",
@@ -139,13 +139,13 @@
                                                          clearCom={this.clearCompleted()}/> : '';
             return <div ref="app">
                 <section className="main">
-                    <Header title={todolist.name}/>
-                    <div className="add-taskItem-box">
-                        <input ref="addTask" className="new-todo"
+                    <h1> {todolist.name}</h1>
+                    <div >
+                        <input ref="addTask"
                                placeholder="What needs to be done?"
                                defaultValue={this.state.addTaskTitle}
                                onChange={this.changeHandel}/>
-                        <button className="add-taskItem" onClick={this.addTaskHandel}>Add</button>
+                        <button onClick={this.addTaskHandel}>Add</button>
                     </div>
                     <TodoList todos={todolist.todos} type={this.state.type}
                               delTask={this.deleteTaskHandel}
@@ -157,18 +157,10 @@
         }
     });
 
-    var Header = React.createClass({
-        render: function () {
-            return <header className="header">
-                <h1>{this.props.title}</h1>
-            </header>
-        }
-    });
-
     var TodoList = React.createClass({
         render: function () {
             let that = this;
-            return <ul className="todo-list">
+            return <ul className="todo-lis">
                 {this.props.todos.map(function (todo, i) {
                     switch (that.props.type) {
                         case 'all' :
@@ -207,11 +199,11 @@
 
             return <li className={className}>
                 <div className="view">
-                    <input className="toggle" type="checkbox"
+                    <input  type="checkbox"
                            onClick={this.props.comTask}
                            checked={todo.completed}/>
                     <label> {todo.title} </label>
-                    <button ref="deleteTask" className="destroy" onClick={this.props.delTask}>delete</button>
+                    <button ref="deleteTask"  onClick={this.props.delTask}>delete</button><br/>
                 </div>
             </li>
         }
@@ -234,17 +226,17 @@
             }
 
             return <footer className="footer">
-                    <span className="todo-count">
+                    <span >
                         <strong> {this.props.lefted} </strong> <span> </span> <span> items </span> <span> left </span>
                     </span>
-                <ul className="filters">
+                <ul className="filter">
                     <li><a href="#" className={type[0]} onClick={this.props.switchType.bind(null, 'all')}> All </a></li>
                     <li><a href="#" className={type[1]} onClick={this.props.switchType.bind(null, 'active')}>
                         Active </a></li>
                     <li><a href="#" className={type[2]} onClick={this.props.switchType.bind(null, 'completed')}>
                         Completed </a></li>
                 </ul>
-                <button className="clear-completed" onClick={this.props.clearCom}>
+                <button  onClick={this.props.clearCom}>
                     Clear completed
                 </button>
             </footer>
